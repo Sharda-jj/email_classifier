@@ -10,7 +10,7 @@ pinned: false
 
 # 📧 Email Classification API
 
-This project classifies incoming emails into categories like **Billing Issue**, **Technical Support**, etc., after masking sensitive Personally Identifiable Information (PII) such as names, phone numbers, Aadhar, and card details.
+This project classifies incoming emails into categories like Incident, Request, etc., after masking sensitive Personally Identifiable Information (PII) such as names, phone numbers, Aadhar, and card details.
 
 It uses:
 - ✅ Regex-based PII masking
