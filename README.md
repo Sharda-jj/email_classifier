@@ -1,76 +1,86 @@
----
-title: Email Classifier API
-emoji: 📬
-colorFrom: yellow
-colorTo: blue
-sdk: docker
-app_file: app.py
-pinned: false
----
+# Email Classification API
 
-# 📧 Email Classification API
-
-This project classifies incoming emails into categories like Incident, Request, etc., after masking sensitive Personally Identifiable Information (PII) such as names, phone numbers, Aadhar, and card details.
-
-It uses:
-- ✅ Regex-based PII masking
-- ✅ A trained `RandomForestClassifier` inside a `Pipeline`
-- ✅ FastAPI to serve the classification API
-- ✅ Docker-based deployment on Hugging Face Spaces
+This project classifies incoming emails into categories such as **Billing Issue**, **Complaint**, or **Technical Support**, after detecting and masking Personally Identifiable Information (PII) such as names, phone numbers, card numbers, Aadhar, and emails.
 
 ---
 
-## 🔗 Live API (Hugging Face)
+## Features
 
-**Test it here:**  
-👉 https://shardaseque1206-email-classifier.hf.space/docs  
-(Swagger UI to interact with the `/classify/` endpoint)
+- PII masking using regular expressions
+- Machine learning classification using `RandomForestClassifier` in a `Pipeline`
+- FastAPI backend with Dockerized deployment
+- Live deployment on Hugging Face Spaces
 
 ---
 
-## 📂 Project Structure
+## Live API (Hugging Face)
+
+Access the live API with Swagger UI documentation:  
+[https://shardaseque1206-email-classifier.hf.space/docs](https://shardaseque1206-email-classifier.hf.space/docs)
+
+---
+
+## Project Structure
 
 ```
-email-classifier/
-├── app.py                # Uvicorn entrypoint
-├── api.py                # FastAPI logic (routes + classification)
-├── utils.py              # PII masking logic
-├── models.py             # Model training script
-├── requirements.txt      # Python dependencies
-├── email_classifier.pkl  # Trained ML model
-├── Dockerfile            # For Hugging Face Spaces deployment
-└── README.md             # This file
+email_classifier/
+├── app.py                  # Uvicorn entrypoint for Hugging Face
+├── api.py                  # FastAPI route for classification
+├── utils.py                # PII masking function
+├── models.py               # Model training script
+├── requirements.txt        # Python dependencies
+├── Dockerfile              # Deployment setup for Hugging Face
+├── README.md               # Project documentation
+├── email_classifier.pkl    # Trained model (compressed under 100MB)
+├── combined_emails_with_natural_pii.csv  # Labeled training data
+└── __init__.py             # (Optional) Makes folder a Python package
 ```
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions (Local)
 
-### 1. Install dependencies
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Sharda-jj/email_classifier.git
+cd email_classifier
+```
+
+### 2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Run API locally
+### 3. Run the API locally
 
 ```bash
 uvicorn api:app --reload
 ```
 
-### 3. Train model (optional)
+Visit `http://127.0.0.1:8000/docs` to interact with the API locally.
+
+---
+
+## Training the Model (Optional)
+
+To retrain the model from the dataset:
 
 ```bash
 python models.py
 ```
 
+This reads `combined_emails_with_natural_pii.csv`, applies PII masking, and trains a classification pipeline.  
+The trained model is saved to `email_classifier.pkl` using `joblib` with compression enabled.
+
 ---
 
-## 🧪 API Usage
+## API Usage
 
 ### Endpoint: `POST /classify/`
 
-**Request:**
+**Request Example:**
 
 ```json
 {
@@ -78,7 +88,7 @@ python models.py
 }
 ```
 
-**Response:**
+**Response Example:**
 
 ```json
 {
@@ -94,19 +104,36 @@ python models.py
 
 ---
 
-## ✅ Submission Requirements
+## About `__init__.py`
 
-- [x] `app.py` main script
-- [x] `requirements.txt`
-- [x] `README.md` with setup and usage
-- [x] `models.py` to train the classifier
-- [x] `utils.py` for masking logic
-- [x] `api.py` for FastAPI
-- [x] Deployed on Hugging Face + deployment link provided
+The file `__init__.py` marks a directory as a Python package. While not required in modern Python (3.3+), it can be useful when organizing modular codebases or enabling relative imports.  
+In this project, it is included for completeness.
 
 ---
 
-## 🧠 Author
+## Submission Checklist
+
+- [x] `app.py` (entrypoint)
+- [x] `api.py` (FastAPI logic)
+- [x] `models.py` (training logic)
+- [x] `utils.py` (PII masking)
+- [x] `requirements.txt`
+- [x] `Dockerfile`
+- [x] `README.md` with setup and usage instructions
+- [x] Hugging Face deployment
+- [x] `email_classifier.pkl` included (compressed <100MB)
+- [x] `combined_emails_with_natural_pii.csv`
+
+---
+
+## Author
 
 **Sharda Jadhav**  
-Deployment: https://shardaseque1206-email-classifier.hf.space
+- GitHub: [https://github.com/Sharda-jj/email_classifier](https://github.com/Sharda-jj/email_classifier)  
+- Hugging Face: [https://shardaseque1206-email-classifier.hf.space](https://shardaseque1206-email-classifier.hf.space)
+
+
+
+
+
+
