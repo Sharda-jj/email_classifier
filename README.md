@@ -128,8 +128,7 @@ In this project, it is included for completeness.
 
 ## Author
 
-**Sharda Jadhav**  
-- GitHub: [https://github.com/Sharda-jj/email_classifier](https://github.com/Sharda-jj/email_classifier)  
+**Sharda Jadhav**   
 - Hugging Face: [https://shardaseque1206-email-classifier.hf.space](https://shardaseque1206-email-classifier.hf.space)
 
 
