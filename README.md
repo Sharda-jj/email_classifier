@@ -1,6 +1,6 @@
 # Email Classification API
 
-This project classifies incoming emails into categories such as **Billing Issue**, **Complaint**, or **Technical Support**, after detecting and masking Personally Identifiable Information (PII) such as names, phone numbers, card numbers, Aadhar, and emails.
+This project classifies incoming emails into categories such as **REQUEST**, **PROBLEM**, or **CHANGE** etc, after detecting and masking Personally Identifiable Information (PII) such as names, phone numbers, card numbers, Aadhar, and emails.
 
 ---
 
