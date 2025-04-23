@@ -1,16 +1,18 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
-import json
 from utils import mask_pii_neutral_order
+
 
 app = FastAPI()
 
 # Load the saved model
 model = joblib.load("email_classifier.pkl")
 
+
 class EmailInput(BaseModel):
     email: str
+
 
 @app.post("/classify/")
 async def classify_email(email_input: EmailInput):
