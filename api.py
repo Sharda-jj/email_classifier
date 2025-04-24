@@ -27,8 +27,5 @@ async def classify_email(email_input: EmailInput):
     }
 
 
-@app.get("/")
-def read_root():
-    return {"message": "Email Classification API is live. Visit /docs to test the /classify/ endpoint."}
 
     
